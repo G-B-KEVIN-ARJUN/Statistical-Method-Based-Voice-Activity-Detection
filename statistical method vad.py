@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[8]:
-
 
 #importing libraries
 import os
@@ -14,15 +9,11 @@ from numpy.linalg import norm
 from scipy.special import jv
 
 
-# In[9]:
-
 
 #bessel function used in gain calculation
 def bessel(v, X):
     return ((1j ** (-v)) * jv(v, 1j * X)).real
 
-
-# In[10]:
 
 
 # Short Time Fourier Transform (STFT) function
@@ -35,9 +26,6 @@ def stft(x, n_fft=512, win_length=400, hop_length=160, window='hamming'):
         window = np.ones(win_length)
     return np.array([np.fft.rfft(window * x[i:i + win_length], n_fft, axis=0) for i in range(0, len(x) - win_length, hop_length)])
         
-
-
-# In[11]:
 
 
 def estnoisem(pSpectrum, hop_length):
@@ -153,7 +141,6 @@ def estnoisem(pSpectrum, hop_length):
     return x
 
 
-# In[12]:
 
 
 # Function to calculate M(D) and H(D) values for given input values
@@ -208,8 +195,6 @@ def mhvals(*args):
     return m, h, d
 
 
-# In[13]:
-
 
 # Function to find the maximum of two complex arrays element-wise
 def max_complex(a, b):
@@ -237,8 +222,6 @@ def max_complex(a, b):
 
     return cc
 
-
-# In[14]:
 
 
 # Function to find the minimum of two complex arrays element-wise
@@ -270,8 +253,6 @@ def min_complex(a, b):
     return cc
 
 
-# In[15]:
-
 
 # Function to find the minimum element of a matrix along a specific dimension
 def min_complex_mat(a):
@@ -283,7 +264,6 @@ def min_complex_mat(a):
     return m
 
 
-# In[16]:
 
 
 # Voice Activity Detection (VAD) function
@@ -362,8 +342,6 @@ def VAD(signal, sr, nFFT=512, win_length=0.025, hop_length=0.01, theshold=0.7):
     return (arr + [0] * l)[:len(signal)]
 
 
-# In[17]:
-
 
 # Path to the audio file
 path_clean = 'audio.wav'
@@ -394,7 +372,7 @@ plt.tight_layout()
 plt.show()
 
 
-# In[ ]:
+
 
 
 
